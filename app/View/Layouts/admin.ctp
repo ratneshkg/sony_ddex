@@ -11,6 +11,14 @@
 		<?php echo $title_for_layout; ?>
 	</title>
     <link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
+    <style type="text/css">
+	  body {
+		padding-bottom: 40px;
+	  }
+	  .sidebar-nav {
+		padding: 9px 0;
+	  }
+	</style>
 	<?php
 		echo $this->Html->meta('icon'); ?>
 	
@@ -30,17 +38,17 @@
 		<div id="header">
 			<h1></h1>
 		</div>
-		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
                    <!-- topbar starts -->
 	             <?php echo $this->element('header'); ?>
-	           <!-- topbar ends -->    
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			
-		</div>
+	           <!-- topbar ends -->  
+                   <div class="container-fluid">
+                       <?php echo $this->fetch('content'); ?>
+		<footer>
+                   <p class="pull-left">&copy; <a href="#" target="_blank">Library Ideas</a> <?php echo date('Y');?></p>
+                   <p class="pull-right">Powered by: <a href="#">InfoBeans</a></p>
+                </footer>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
      <?php echo $this->Html->script(array('jquery-1.7.2.min','jquery-ui-1.8.21.custom.min','bootstrap-transition','bootstrap-alert','bootstrap-modal','bootstrap-dropdown',
