@@ -10,21 +10,12 @@
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
-    <link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
-    <style type="text/css">
-	  body {
-		padding-bottom: 40px;
-	  }
-	  .sidebar-nav {
-		padding: 9px 0;
-	  }
-	</style>
-	<?php
+    	<?php
 		echo $this->Html->meta('icon'); ?>
 	
 		<?php 
                 
-                echo $this->Html->css(array('bootstrap-responsive','charisma-app','jquery-ui-1.8.21.custom','fullcalendar','fullcalendar.print',
+                echo $this->Html->css(array('bootstrap-cerulean','custom','bootstrap-responsive','charisma-app','jquery-ui-1.8.21.custom','fullcalendar','fullcalendar.print',
                                               'chosen','uniform.default','colorbox','jquery.cleditor','jquery.noty','noty_theme_default','elfinder.min',
                                               'elfinder.theme','jquery.iphone.toggle','opa-icons','uploadify'));
 
@@ -44,11 +35,20 @@
 	             <?php echo $this->element('header'); ?>
 	           <!-- topbar ends -->  
                    <div class="container-fluid">
-                       <?php echo $this->fetch('content'); ?>
-		<footer>
-                   <p class="pull-left">&copy; <a href="#" target="_blank">Library Ideas</a> <?php echo date('Y');?></p>
-                   <p class="pull-right">Powered by: <a href="#">InfoBeans</a></p>
-                </footer>
+                       <div class="row-fluid">
+                            <?php echo $this->element('admin_sidebar');?>
+			
+	             <noscript>
+                                <div class="alert alert-block span10">
+                                <h4 class="alert-heading">Warning!</h4>
+                                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                                </div>
+                    </noscript>		
+                         <?php echo $this->fetch('content');  ?>
+                        
+                        <?php echo $this->element('footer');                       
+                       ?>
+		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
      <?php echo $this->Html->script(array('jquery-1.7.2.min','jquery-ui-1.8.21.custom.min','bootstrap-transition','bootstrap-alert','bootstrap-modal','bootstrap-dropdown',
