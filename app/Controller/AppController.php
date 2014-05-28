@@ -44,6 +44,14 @@ class AppController extends Controller {
                     'hashType' => 'sha256'
                    )
                 )
+        ),
+        'loginRedirect'  => array(
+            'controller'  => 'users',
+            'action'      =>  'adminDashboard'
+        ),
+        'logoutRedirect' => array(
+            'controller'   => 'users',
+            'action'       => 'login'
         )
     )
   );
