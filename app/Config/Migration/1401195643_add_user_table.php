@@ -42,6 +42,12 @@ class AddUserTable extends CakeMigration {
                                 'default' => null,
                                 'length'  => 55,
                             ),
+                            'username' => array(
+                                'type'    =>'string',
+                                'null'    => false,
+                                'default' => null,
+                                'length'  => 55,
+                            ),
                             'email' => array(
                                 'type'    =>'string',
                                 'null'    => false,
@@ -104,13 +110,17 @@ class AddUserTable extends CakeMigration {
  */
 	public function after($direction) {
             if($direction ==='up') {
+                App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
                 $users=ClassRegistry::init('User');
                 $userData=array(
                     'first_name'   =>'Admin',
+                    'username'     =>'admin',
                     'email'        =>'admin@infobeans.com',
                     'password'     =>'puneserver.123',
                     'type'         =>1
                 );
+                $passwordHasher    = new SimplePasswordHasher(array('hashType' => 'sha256'));
+                $userData['password'] = $passwordHasher->hash($userData['password']);
                 $users->save($userData);
             }
 		return true;
