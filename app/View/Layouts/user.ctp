@@ -25,20 +25,14 @@
 	?>
 </head>
 <body>
-	<!--<div id="container">-->
-		
-<!--		<div id="content">-->
 
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
-		<!--</div>-->
-		<div id="footer">
-			
-		</div>
-<!--	</div>-->
 	<?php echo $this->element('sql_dump'); ?>
-<?php echo $this->Html->script(array('jquery-1.7.2.min','jquery-ui-1.8.21.custom.min','bootstrap-transition','bootstrap-alert','bootstrap-modal','bootstrap-dropdown',
+<?php
+echo $this->Html->script(array(
+    'jquery-1.7.2.min','jquery-ui-1.8.21.custom.min','bootstrap-transition','bootstrap-alert','bootstrap-modal','bootstrap-dropdown',
                                                'bootstrap-scrollspy','bootstrap-tab','bootstrap-tooltip','bootstrap-popover',
                                                'bootstrap-button','bootstrap-collapse','bootstrap-carousel', 'bootstrap-typeahead','bootstrap-tour',
                                                
