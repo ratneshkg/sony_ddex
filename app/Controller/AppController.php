@@ -35,11 +35,15 @@ class AppController extends Controller {
     'Auth' => array(
         'loginAction' => array(
             'controller' => 'users',
-            'action' => 'login',
+            'action'     => 'login',
         ),
-        'authError' => 'Invalid username or password',
-        'authenticate' => array(
-            'Form'
+        'authError'   => 'Invalid username or password',
+        'authenticate'=> array(
+            'Form'       => array('passwordHasher' => array(
+                    'className' => 'Simple',
+                    'hashType' => 'sha256'
+                   )
+                )
         )
     )
   );
