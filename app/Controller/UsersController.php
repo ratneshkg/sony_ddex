@@ -17,6 +17,5 @@ class UsersController extends AppController {
     }
     
     public function adminDashboard(){
-         $this->layout='admin';
     }
 }

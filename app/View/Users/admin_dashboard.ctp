@@ -1,12 +1,3 @@
-    
-				
-	<!-- left menu starts -->
-	
-			
-        <div id="content" class="span10">
-        <!-- content starts -->
-
-
             <div>
                     <ul class="breadcrumb">
                             <li>
@@ -161,10 +152,3 @@
                     </div><!--/span-->
 
             </div><!--/row-->
-
-
-                        <!-- content ends -->
-        </div><!--/#content.span10-->
-    </div><!--/fluid-row-->
-				
-  	     
