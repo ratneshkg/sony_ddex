@@ -37,7 +37,7 @@ class AppController extends Controller {
             'controller' => 'users',
             'action'     => 'login',
         ),
-        'authError'   => 'Invalid username or password',
+        'authError'   => 'You are Not authorised to access that location ',
         'authenticate'=> array(
             'Form'       => array('passwordHasher' => array(
                     'className' => 'Simple',

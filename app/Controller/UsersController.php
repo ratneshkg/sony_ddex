@@ -26,6 +26,9 @@ class UsersController extends AppController {
     }
     
     public function login() {
+        if($this->Auth->user()){
+            $this->redirect(array('controller'=>'users','action'=>'adminDashboard'));
+        }
         $this->layout='user';
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
@@ -33,13 +36,16 @@ class UsersController extends AppController {
             } 
             else {
                 $this->Session->setFlash(
-                    __('Username or password is incorrect')
+                    __('Username or password is incorrect'),
+                       'default',
+                        array(),
+                        'auth'
                 );
             }
         }
     }
     
     public function logout() {
-        
+        $this->redirect($this->Auth->logout());
     }
 }
