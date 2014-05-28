@@ -1,7 +1,7 @@
 <footer>
         <p class="pull-left">&copy; <a href="#" target="_blank">Library Ideas</a> <?php echo date('Y');?></p>
         <p class="pull-right">Powered by: <a href="#">InfoBeans</a></p>
-</footer>
+</footer
 
   <hr>
 

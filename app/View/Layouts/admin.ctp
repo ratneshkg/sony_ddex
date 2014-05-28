@@ -25,7 +25,7 @@
             ?>
     </head>
     <body>
-            <!--<div id="container">-->
+            <div id="container">
                     <?php echo $this->Session->flash(); ?>
                     <!-- topbar starts -->
                     <?php echo $this->element('header'); ?>
@@ -43,12 +43,10 @@
                                 <div id="content" class="span10">
                                     <?php echo $this->fetch('content');  ?>
                                 </div>
-                                
+                                <?php echo $this->element('footer'); ?>
                          </div>
-                        <?php echo $this->element('footer'); ?>
                      </div>
-                    
-            <!--</div>-->                   
+            </div>                   
             <?php echo $this->element('sql_dump'); ?>
             <?php echo $this->Html->script(array('jquery-1.7.2.min','jquery-ui-1.8.21.custom.min','bootstrap-transition','bootstrap-alert','bootstrap-modal','bootstrap-dropdown',
                                                    'bootstrap-scrollspy','bootstrap-tab','bootstrap-tooltip','bootstrap-popover',
