@@ -1,9 +1,4 @@
-<footer>
-        <p class="pull-left">&copy; <a href="#" target="_blank">Library Ideas</a> <?php echo date('Y');?></p>
-        <p class="pull-right">Powered by: <a href="#">InfoBeans</a></p>
-</footer>
-
-  <hr>
+<hr>
 
     <div class="modal hide fade" id="myModal">
             <div class="modal-header">
@@ -18,3 +13,9 @@
                     <a href="#" class="btn btn-primary">Save changes</a>
             </div>
     </div>	
+<footer>
+        <p class="pull-left">&copy; <a href="#" target="_blank">Library Ideas</a> <?php echo date('Y');?></p>
+        <p class="pull-right">Powered by: <a href="#">InfoBeans</a></p>
+</footer>
+
+  
