@@ -1,4 +1,4 @@
-                <?php echo $this->Html->link(__('New User'), array('action' => 'add'),array('class'=>"btn btn-success",'escape'=>false)); ?>
+<?php echo $this->Html->link(__('New User'), array('action' => 'add'),array('class'=>"btn btn-success",'escape'=>false)); ?>
 
 <div class="row-fluid sortable">		
         <div class="box span12">

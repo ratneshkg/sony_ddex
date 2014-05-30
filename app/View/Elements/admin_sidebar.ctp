@@ -17,7 +17,9 @@
                                                     <?php echo $this->Html->link("<i class='icon-user'></i><span class='hidden-tablet'> Users </span>",array('controller'=>'users','action'=>'index'),array('escape'=>false));?>
                                                 </li>
 						<li><a class="ajax-link" href="calendar.html"><i class="icon-folder-close"></i><span class="hidden-tablet"> Batches </span></a></li>
-						<li><a class="ajax-link" href="calendar.html"><i class="icon-file"></i><span class="hidden-tablet"> Providers </span></a></li>
+						<li>
+                                                    <?php echo $this->Html->link('<i class="icon-file"></i><span class="hidden-tablet"> Providers </span>',array('controller'=>'providers','action'=>'index'),array('class'=>'ajax-link','escape'=>false));?>
+                                                </li>
 						
 					</ul>					
 				</div><!--/.well -->
