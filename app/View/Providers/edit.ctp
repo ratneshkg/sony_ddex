@@ -39,7 +39,7 @@
                                   <div class="form-actions">
                                       <?php 
                                       echo $this->Form->button('Save Provider',array('class'=>'btn btn-primary'));
-                                      echo $this->Html->link('Cancel',array('controller'=>'users','action'=>'index'),array('class'=>'btn'));
+                                      echo $this->Html->link('Cancel',array('controller'=>'providers','action'=>'index'),array('class'=>'btn'));
                                       ?>
                                   </div>
                                 </fieldset>

@@ -22,6 +22,9 @@ class ProvidersController extends AppController {
  * @return void
  */
 	public function index() {
+            /**
+             * @todo : use cake's pagingation in view to display records instead of current javascript pagination 
+             */
 		$this->Provider->recursive = 0;
 		$this->set('providers', $this->Paginator->paginate());
 	}
@@ -37,8 +40,7 @@ class ProvidersController extends AppController {
 		if (!$this->Provider->exists($id)) {
 			throw new NotFoundException(__('Invalid provider'));
 		}
-		$options = array('conditions' => array('Provider.' . $this->Provider->primaryKey => $id));
-		$this->set('provider', $this->Provider->find('first', $options));
+		$this->set('provider', $this->Provider->getProviderById($id));
 	}
 
 /**
@@ -77,8 +79,7 @@ class ProvidersController extends AppController {
 				$this->Session->setFlash(__('The provider could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Provider.' . $this->Provider->primaryKey => $id));
-			$this->request->data = $this->Provider->find('first', $options);
+			$this->request->data = $this->Provider->getProviderById($id);
 		}
 	}
 

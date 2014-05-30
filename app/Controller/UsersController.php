@@ -26,6 +26,9 @@ class UsersController extends AppController {
  * @return void
  */
 	public function index() {
+            /**
+             * @todo : use cake's pagingation in view to display records instead of current javascript pagination 
+             */
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
 	}
@@ -46,8 +49,8 @@ class UsersController extends AppController {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
-		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-		$this->set('user', $this->User->find('first', $options));
+                $user  = $this->User->getUserById($id);
+		$this->set('user', $user);
 	}
 
 /**
@@ -92,8 +95,7 @@ class UsersController extends AppController {
                             	$this->Session->setFlash(__('Please enter valid Password'));
                         }
 		} else {
-			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-			$this->request->data = $this->User->find('first', $options);
+			$this->request->data = $this->User->getUserById($id);
 		}
 	}
 
