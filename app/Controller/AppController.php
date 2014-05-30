@@ -31,6 +31,11 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+    
+/**
+ *
+ * Components declaration.
+ */
     public $components = array(
     'Auth' => array(
         'loginAction' => array(
@@ -55,9 +60,30 @@ class AppController extends Controller {
         )
     )
   );
-    
+   
+/**
+ * 
+ * Beforefilter callback.
+ */
     public function beforeFilter() {
         parent::beforeFilter();
         $this->layout='admin';
+    }
+/**
+ * BeforeRender callback 
+ * 
+ */    
+    public function beforeRender() {
+        parent::beforeRender();
+        $this->_setLoggedInUserData();
+    }
+
+/**
+ * @method : _loggedInUserData
+ * Set the logged in user status and user data.
+ */    
+    public function _setLoggedInUserData() {
+        $loggedInUser=$this->Auth->user();
+        $this->set(compact('loggedInUser'));
     }
 }
