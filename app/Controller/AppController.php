@@ -68,6 +68,9 @@ class AppController extends Controller {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->layout='admin';
+        $title_for_layout = 'Library ideas';
+        $this->set(compact('title_for_layout'));
+
     }
 /**
  * BeforeRender callback 
