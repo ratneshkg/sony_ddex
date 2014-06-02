@@ -20,10 +20,14 @@ class Provider extends AppModel {
  */
 	public $validate = array(
 		'provider_name' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'Please Enter Provider Name.',
-			),
+                    'empty' =>array(
+                        'rule'     =>'notEmpty',
+                        'message'  => "Please enter Provider name "
+                    ),
+                    'onlyText' =>array (
+                        'rule'     => '/^[a-zA-Z_]+[\ ]*$/',
+                        'message'  => "Only alphabetic characters are allowed "
+                    )
 		),
 		'provider_code' => array(
 			'notEmpty' => array(

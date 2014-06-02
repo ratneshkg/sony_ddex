@@ -1,8 +1,5 @@
-<div class="row-fluid sortable">
-        <div class="box span12">
                 <div class="box-header well" data-original-title>
-                     <?php echo $this->Html->tag('h2',__('<i class="icon-user"></i> Edit Provider'),array('escape'=>false));
-                           echo $this->element('box_icons'); ?>
+                     <?php echo $this->Html->tag('h2',__('<i class="icon-user"></i> Edit Provider'),array('escape'=>false)); ?>
                 </div>
                 <div class="box-content">
                             <?php echo $this->Form->create('Provider',array('inputDefaults'=>array('div'=>false,'label'=>false),'class'=>'form-horizontal')); ?>
@@ -39,13 +36,9 @@
                                   <div class="form-actions">
                                       <?php 
                                       echo $this->Form->button('Save Provider',array('class'=>'btn btn-primary'));
-                                      echo $this->Html->link('Cancel',array('controller'=>'providers','action'=>'index'),array('class'=>'btn'));
+                                      echo $this->Html->link('Cancel',array('controller'=>'providers','action'=>'index'),array('class'=>'btn cancelBtn'));
                                       ?>
                                   </div>
                                 </fieldset>
                             <?php echo $this->Form->end(); ?>
-                          <!--</form>-->
                 </div>
-        </div><!--/span-->
-
-</div><!--/row-->

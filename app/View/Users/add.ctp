@@ -1,8 +1,5 @@
-<div class="row-fluid sortable">
-        <div class="box span12">
                 <div class="box-header well" data-original-title>
-                     <?php echo $this->Html->tag('h2',__('<i class="icon-user"></i> Add User'),array('escape'=>false));
-                           echo $this->element('box_icons'); ?>
+                     <?php echo $this->Html->tag('h2',__('<i class="icon-user"></i> Add User'),array('escape'=>false)); ?>
                 </div>
                 <div class="box-content">
                             <?php echo $this->Form->create('User',array('inputDefaults'=>array('div'=>false,'label'=>false),'class'=>'form-horizontal')); ?>
@@ -37,22 +34,25 @@
                                           <?php echo $this->Form->input('email',array('class'=>"input-xlarge focused")); ?>
                                         </div>
                                   </div>
-                                    <div class="control-group">
+                                   <div class="control-group">
                                         <label class="control-label">Password</label>
                                         <div class="controls">
                                           <?php echo $this->Form->input('password',array('class'=>"input-xlarge focused")); ?>
+                                        </div>
+                                  </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Confirm Password</label>
+                                        <div class="controls">
+                                          <?php echo $this->Form->input('confirm_password',array('class'=>"input-xlarge focused",'type'=>'password')); ?>
                                         </div>
                                   </div>
 
                                   <div class="form-actions">
                                       <?php 
                                       echo $this->Form->button('Add User',array('class'=>'btn btn-primary'));
-                                      echo $this->Html->link('Cancel',array('controller'=>'users','action'=>'index'),array('class'=>'btn'));
+                                      echo $this->Html->link('Cancel',array('controller'=>'users','action'=>'index'),array('class'=>'btn cancelBtn'));
                                       ?>
                                   </div>
                                 </fieldset>
                             <?php echo $this->Form->end(); ?>
                 </div>
-        </div><!--/span-->
-
-</div><!--/row-->

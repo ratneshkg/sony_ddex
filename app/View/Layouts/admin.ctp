@@ -24,7 +24,7 @@
             ?>
     </head>
     <body>
-                    <?php echo $this->Session->flash(); ?>
+                    
                     <!-- topbar starts -->
                     <?php echo $this->element('header'); ?>
                     <!-- topbar ends -->  
@@ -39,7 +39,13 @@
                                             </div>
                                 </noscript>	
                                 <div id="content" class="span10">
-                                    <?php echo $this->fetch('content');  ?>
+                                    <div class="row-fluid sortable">
+                                      <div class="box span12">
+                                    <?php
+                                    echo $this->Session->flash(); 
+                                    echo $this->fetch('content');  ?>
+                                       </div>
+                                     </div>   
                                 </div>
                                 
                          </div>

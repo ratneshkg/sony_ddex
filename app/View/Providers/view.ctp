@@ -1,8 +1,5 @@
-<div class="row-fluid sortable">
-        <div class="box span12">
                 <div class="box-header well" data-original-title>
-                    <?php echo $this->Html->tag('h2',__('<i class="icon-user"></i> Provider'),array('escape'=>false));
-                           echo $this->element('box_icons'); ?>
+                    <?php echo $this->Html->tag('h2',__('<i class="icon-user"></i> Provider'),array('escape'=>false)); ?>
                 </div>
                 <div class="box-content">
                                   <div class="control-group clearfix">
@@ -29,12 +26,22 @@
                                           <span>: <?php echo $provider['Provider']['party_name']; ?></span>
                                         </div>
                                   </div>
+                                  <div class="control-group clearfix">
+                                        <label class="span2">Created</label>
+                                        <div class="span4 clearfix">
+                                          <span>: <?php echo $provider['Provider']['created']; ?></span>
+                                        </div>
+                                  </div>
+                                  <div class="control-group clearfix">
+                                        <label class="span2">Modified</label>
+                                        <div class="span4 clearfix">
+                                          <span>: <?php echo $provider['Provider']['modified']; ?></span>
+                                        </div>
+                                  </div>
                                   <div class="form-actions clearfix">
                                       <?php 
                                       echo $this->Html->link('Edit',array('controller'=>'providers','action'=>'edit',$provider['Provider']['id']),array('class'=>'btn btn-primary'));
+                                      echo $this->Html->link('Cancel',array('controller'=>'providers','action'=>'index'),array('class'=>'btn cancelBtn'));
                                       ?>
                                   </div>
                 </div>
-        </div><!--/span-->
-
-</div><!--/row-->

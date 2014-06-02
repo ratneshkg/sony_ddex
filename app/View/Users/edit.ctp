@@ -1,8 +1,6 @@
-<div class="row-fluid sortable">
-        <div class="box span12">
+                                <?php echo $this->Session->flash(); ?>
                 <div class="box-header well" data-original-title>
-                    <?php echo $this->Html->tag('h2',__('<i class="icon-user"></i> Edit User Profile'),array('escape'=>false));
-                           echo $this->element('box_icons'); ?>
+                    <?php echo $this->Html->tag('h2',__('<i class="icon-user"></i> Edit User Profile'),array('escape'=>false)); ?>
                 </div>
                 <div class="box-content">
                             <?php echo $this->Form->create('User',array('inputDefaults'=>array('div'=>false,'label'=>false),'class'=>'form-horizontal')); ?>
@@ -48,19 +46,16 @@
                                    <div class="control-group">
                                         <label class="control-label">Confirm New Password</label>
                                         <div class="controls">
-                                          <?php echo $this->Form->input('confirm_new_password',array('type'=> 'password','class'=>"input-xlarge focused")); ?>
+                                          <?php echo $this->Form->input('confirm_password',array('type'=> 'password','class'=>"input-xlarge focused")); ?>
                                         </div>
                                   </div>
 
                                   <div class="form-actions">
                                       <?php 
                                       echo $this->Form->button('Submit',array('class'=>'btn btn-primary'));
-                                      echo $this->Html->link('Cancel',array('controller'=>'users','action'=>'index'),array('class'=>'btn'));
+                                      echo $this->Html->link('Cancel',array('controller'=>'users','action'=>'index'),array('class'=>'btn cancelBtn'));
                                       ?>
                                   </div>
                                 </fieldset>
                             <?php echo $this->Form->end(); ?>
                 </div>
-        </div><!--/span-->
-
-</div><!--/row-->

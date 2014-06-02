@@ -6,7 +6,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                         </a>
-                        <?php echo $this->Html->link('<img alt="Charisma Logo" src="img/logo20.png" /> <span>Library Ideas</span>','/',array('class'=>'brand','escape'=>false));
+                        <?php echo $this->Html->link('<img alt="Library Ideas" src="/img/logo20.png" /> <span>Library Ideas</span>','/',array('class'=>'brand','escape'=>false));
                         if(!empty($loggedInUser)) { ?>
                             <div class="btn-group pull-right" >
                                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">

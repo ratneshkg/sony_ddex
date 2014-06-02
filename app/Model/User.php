@@ -32,21 +32,31 @@ class User extends AppModel {
                        
 		),
                 'first_name' => array(
-                            'rule'     =>'notEmpty',
-                            'message'  => "Please enter First name "
-                ),
-                 'middle_name' => array(
-                            'rule'     =>'notEmpty',
-                            'message'  => "Please enter Middle name "
+                    'empty' =>array(
+                        'rule'     =>'notEmpty',
+                        'message'  => "Please enter First name "
+                    ),
+                    'onlyText' =>array (
+                        'rule'     => '/^[a-zA-Z_]+[\ ]*$/',
+                        'message'  => "Only alphabetic characters are allowed "
+                    )
+                            
                 ),
                 'last_name' => array(
-                            'rule'     =>'notEmpty',
-                            'message'  => "Please enter last name "
+                     'empty' =>array(
+                        'rule'     =>'notEmpty',
+                        'message'  => "Please enter Last  name "
+                    ),
+                    'onlyText' =>array (
+                        'rule'     => '/^[a-zA-Z_]+[\ ]*$/',
+                        'message'  => "Only alphabetic characters are allowed "
+                    )
                 ),
                 'username' => array(
                             'rule'     =>'notEmpty',
                             'message'  => "Please enter username "
-                )
+                ),
+                
 	);
 
 /**
@@ -69,11 +79,9 @@ class User extends AppModel {
  * @return boolean
  */        
 
-        public function validatePassword($data=array()) {
-            if(!empty($data) && isset($data['User']['new_password']) && isset($data['User']['confirm_new_password'])) {
-                if(trim($data['User']['new_password']) != '' && $data['User']['new_password'] == $data['User']['confirm_new_password']) {
-                    return true;
-                }
+        public function validatePassword($password=null,$confirm_password=null) {
+            if(trim($password) != '' && $password == $confirm_password) {
+                return true;
             }
             return false;
         }

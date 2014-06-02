@@ -60,13 +60,19 @@ class UsersController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->User->create();
+                    if($this->User->validatePassword($this->request->data['User']['password'],$this->request->data['User']['confirm_password'])) { 
+                        $this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				$this->Session->setFlash(__('The user has been saved.'),'success');
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'),'error');
 			}
+                    }
+                    else {
+                        $this->Session->setFlash(__('Please enter valid Password'),'error');
+                    }
+			
 		}
 	}
 
@@ -82,17 +88,29 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-                        if($this->User->validatePassword($this->request->data)) {
+                    $validPassword                    =false;
+                    if(trim($this->request->data['User']['new_password'])=='') {
+                        $validPassword                =true;
+                    }
+                    else {
+                        if($this->User->validatePassword($this->request->data['User']['new_password'],$this->request->data['User']['confirm_password'])) { 
+                            $validPassword                            = true;
                             $this->request->data ['User']['password'] = $this->request->data['User']['new_password'];
+                        }
+                        else {
+                            $validPassword =false;
+                        }
+                    }
+                        if($validPassword) {
                             if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved.'));
+				$this->Session->setFlash(__('The user has been saved.'),'success');
 				return $this->redirect(array('action' => 'index'));
                             } else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'),'error');
                             }
                         }
                         else {
-                            	$this->Session->setFlash(__('Please enter valid Password'));
+                            	$this->Session->setFlash(__('Please enter valid Password'),'error');
                         }
 		} else {
 			$this->request->data = $this->User->getUserById($id);
@@ -113,9 +131,9 @@ class UsersController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->User->delete()) {
-			$this->Session->setFlash(__('The user has been deleted.'));
+			$this->Session->setFlash(__('The user has been deleted.'),'success');
 		} else {
-			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'),'error');
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

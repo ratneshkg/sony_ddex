@@ -52,10 +52,10 @@ class ProvidersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Provider->create();
 			if ($this->Provider->save($this->request->data)) {
-				$this->Session->setFlash(__('The provider has been saved.'));
+				$this->Session->setFlash(__('The provider has been saved.'),'success');
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The provider could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The provider could not be saved. Please, try again.'),'error');
 			}
 		}
 	}
@@ -73,10 +73,10 @@ class ProvidersController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Provider->save($this->request->data)) {
-				$this->Session->setFlash(__('The provider has been saved.'));
+				$this->Session->setFlash(__('The provider has been saved.'),'success');
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The provider could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The provider could not be saved. Please, try again.'),'error');
 			}
 		} else {
 			$this->request->data = $this->Provider->getProviderById($id);
@@ -97,9 +97,9 @@ class ProvidersController extends AppController {
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Provider->delete()) {
-			$this->Session->setFlash(__('The provider has been deleted.'));
+			$this->Session->setFlash(__('The provider has been deleted.'),'success');
 		} else {
-			$this->Session->setFlash(__('The provider could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The provider could not be deleted. Please, try again.'),'error');
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
