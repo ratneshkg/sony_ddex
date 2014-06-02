@@ -119,8 +119,8 @@ class AddUserTable extends CakeMigration {
                     'password'     =>'puneserver.123',
                     'type'         =>1
                 );
-                $passwordHasher    = new SimplePasswordHasher(array('hashType' => 'sha256'));
-                $userData['password'] = $passwordHasher->hash($userData['password']);
+//                $passwordHasher    = new SimplePasswordHasher(array('hashType' => 'sha256'));
+//                $userData['password'] = $passwordHasher->hash($userData['password']);
                 $users->save($userData);
             }
 		return true;
