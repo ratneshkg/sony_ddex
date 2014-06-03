@@ -149,6 +149,7 @@ class UsersController extends AppController {
                 $this->layout='user';
                 if ($this->request->is('post')) {
                     if ($this->Auth->login()) {
+                         $this->_setCookie($this->Auth->user('id'));
                          $this->redirect($this->Auth->redirectUrl());
                     } 
                     else {
@@ -161,6 +162,19 @@ class UsersController extends AppController {
  * Logout method.
  */        
         public function logout() {
+            $this->Cookie->delete('User');
             $this->redirect($this->Auth->logout());
+        }
+        
+        protected function _setCookie($id) {
+            if (!$this->request->data('User.remember_me')) {
+                return false;
+            }
+            $data = array(
+                'username' => $this->request->data('User.username'),
+                'password' => $this->request->data('User.password')
+            );
+            $this->Cookie->write('User', $data, true, '+2 week');
+            return true;
         }
 }

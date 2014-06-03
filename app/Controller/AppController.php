@@ -37,12 +37,13 @@ class AppController extends Controller {
  * Components declaration.
  */
     public $components = array(
+        'Cookie',
     'Auth' => array(
         'loginAction' => array(
             'controller' => 'users',
             'action'     => 'login',
         ),
-        'authError'   => 'You are Not authorised to access that location ',
+        'authError'   => 'You are not authorised to access that location ',
         'authenticate'=> array(
             'Form'       => array('passwordHasher' => array(
                     'className' => 'Simple',
@@ -69,6 +70,8 @@ class AppController extends Controller {
         parent::beforeFilter();
         $this->layout='admin';
         $title_for_layout = 'Library ideas';
+                $this->_checkCoockieAndAutologin();
+
         $this->set(compact('title_for_layout'));
 
     }
@@ -88,5 +91,15 @@ class AppController extends Controller {
     public function _setLoggedInUserData() {
         $loggedInUser=$this->Auth->user();
         $this->set(compact('loggedInUser'));
+    }
+    
+    public function _checkCoockieAndAutologin() {
+
+        if(!$this->Auth->user() && $this->Cookie->read('User')) {
+            $userData=$this->Cookie->read('User');
+            $this->request->data['User']['username']=$userData['username'];
+            $this->request->data['User']['password']=$userData['password'];
+            $this->Auth->login();
+        }
     }
 }

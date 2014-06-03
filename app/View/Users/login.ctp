@@ -37,7 +37,8 @@
                             <?php echo $this->Html->tag('div','',array('class'=>'clearfix'))?>
                             <div class="input-prepend">
                                 <label class="remember" for="remember">
-                                    <input type="checkbox" id="remember" />Remember me</label>
+                                    <!--<input type="checkbox" id="remember" />Remember me</label>-->
+                                       <?php echo $this->Form->checkbox('remember_me');  ?>Remember me</label>
                             </div>
                             <?php echo $this->Html->tag('div','',array('class'=>'clearfix'))?>
 
