@@ -53,8 +53,15 @@ class User extends AppModel {
                     )
                 ),
                 'username' => array(
-                            'rule'     =>'notEmpty',
-                            'message'  => "Please enter username "
+                    'empty'  => array(
+                        'rule'     =>'notEmpty',
+                        'message'  => "Please enter username "
+                    ),
+                    'unique'  =>array(
+                         'rule'    => 'isUnique',
+                         'message' => 'This username has already been taken.'
+                    )
+                            
                 ),
                 
 	);
