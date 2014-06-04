@@ -94,12 +94,13 @@ class AppController extends Controller {
     }
     
     public function _checkCoockieAndAutologin() {
-
         if(!$this->Auth->user() && $this->Cookie->read('User')) {
             $userData=$this->Cookie->read('User');
-            $this->request->data['User']['username']=$userData['username'];
-            $this->request->data['User']['password']=$userData['password'];
-            $this->Auth->login();
+            $this->loadModel('User');
+            $user=$this->User->getUserDataByUsername($userData['username']);
+            if(!empty($user)) {
+                $this->Auth->login($user['User']);
+            }
         }
     }
 }

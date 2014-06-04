@@ -171,8 +171,8 @@ class UsersController extends AppController {
                 return false;
             }
             $data = array(
-                'username' => $this->request->data('User.username'),
-                'password' => $this->request->data('User.password')
+                'username' => $this->request->data('User.username')
+
             );
             $this->Cookie->write('User', $data, true, '+2 week');
             return true;
