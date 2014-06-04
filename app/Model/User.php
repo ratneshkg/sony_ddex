@@ -53,8 +53,15 @@ class User extends AppModel {
                     )
                 ),
                 'username' => array(
-                            'rule'     =>'notEmpty',
-                            'message'  => "Please enter username "
+                    'empty'  => array(
+                        'rule'     =>'notEmpty',
+                        'message'  => "Please enter username "
+                    ),
+                    'unique'  =>array(
+                         'rule'    => 'isUnique',
+                         'message' => 'This username has already been taken.'
+                    )
+                            
                 ),
                 
 	);
@@ -94,5 +101,15 @@ class User extends AppModel {
         public function getUserById($id= null) {
             $this->recursive=0;
             return $this->find('first',array('conditions' => array('User.id'=>$id)));
+        }
+        
+        public function getUserDataByUsername($username = null){
+            $this->recursive=-1;
+            return $this->find('first',array('conditions' => array(
+                'User.username' => $username
+            ),
+                'fileds' =>array(
+                    'User.password'
+                )));
         }
 }
