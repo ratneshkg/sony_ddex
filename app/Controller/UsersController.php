@@ -33,7 +33,10 @@ class UsersController extends AppController {
 		$this->set('users', $this->Paginator->paginate());
 	}
         
-        
+/**
+ * adminDashboard method 
+ * @return void 
+ */        
         public function adminDashboard(){
         
         }
